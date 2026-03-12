@@ -20,6 +20,7 @@
 		A100000011 /* StatusMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000014 /* StatusMenuView.swift */; };
 		A100000012 /* ConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000015 /* ConfigStore.swift */; };
 		A100000013 /* ConfigStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000016 /* ConfigStoreTests.swift */; };
+		A100000014 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000017 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		A200000014 /* StatusMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuView.swift; sourceTree = "<group>"; };
 		A200000015 /* ConfigStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStore.swift; sourceTree = "<group>"; };
 		A200000016 /* ConfigStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStoreTests.swift; sourceTree = "<group>"; };
+		A200000017 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				A200000012 /* StatusManager.swift */,
 				A200000014 /* StatusMenuView.swift */,
 				A200000015 /* ConfigStore.swift */,
+				A200000017 /* SettingsView.swift */,
 				A200000003 /* Assets.xcassets */,
 			);
 			path = Glance;
@@ -210,6 +213,7 @@
 				A100000009 /* StatusManager.swift in Sources */,
 				A100000011 /* StatusMenuView.swift in Sources */,
 				A100000012 /* ConfigStore.swift in Sources */,
+				A100000014 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
