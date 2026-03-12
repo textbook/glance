@@ -48,6 +48,11 @@ struct StatusMenuView: View {
 
             Divider()
 
+            Button("Settings...") {
+                SettingsWindowController.show(configStore: configStore)
+            }
+            .keyboardShortcut(",")
+
             Button("Quit Glance") {
                 NSApplication.shared.terminate(nil)
             }
