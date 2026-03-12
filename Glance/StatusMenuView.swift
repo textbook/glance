@@ -86,6 +86,7 @@ struct ServiceSectionView: View {
                         .fontWeight(.medium)
                     Button {
                         NSWorkspace.shared.open(service.service.baseURL)
+                        NSApp.keyWindow?.close()
                     } label: {
                         Image(systemName: "arrow.up.right.square")
                             .font(.caption)
