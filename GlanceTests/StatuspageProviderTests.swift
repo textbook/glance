@@ -5,16 +5,15 @@ final class StatuspageProviderTests: XCTestCase {
 
     let service = ServiceDefinition(
         name: "TestService",
-        baseURL: URL(string: "https://test.statuspage.io")!,
-        logoName: "test-logo"
+        baseURL: URL(string: "https://test.statuspage.io")!
     )
 
     func testParsesOperationalResponse() async throws {
         let json = """
         {
             "components": [
-                {"name": "API", "status": "operational", "group": false, "id": "1"},
-                {"name": "Web", "status": "operational", "group": false, "id": "2"}
+                {"name": "API", "status": "operational", "group": false, "showcase": true, "id": "1"},
+                {"name": "Web", "status": "operational", "group": false, "showcase": true, "id": "2"}
             ]
         }
         """.data(using: .utf8)!
@@ -35,8 +34,8 @@ final class StatuspageProviderTests: XCTestCase {
         let json = """
         {
             "components": [
-                {"name": "API", "status": "operational", "group": false, "id": "1"},
-                {"name": "Web", "status": "degraded_performance", "group": false, "id": "2"}
+                {"name": "API", "status": "operational", "group": false, "showcase": true, "id": "1"},
+                {"name": "Web", "status": "degraded_performance", "group": false, "showcase": true, "id": "2"}
             ]
         }
         """.data(using: .utf8)!
@@ -55,8 +54,28 @@ final class StatuspageProviderTests: XCTestCase {
         let json = """
         {
             "components": [
-                {"name": "Group Header", "status": "operational", "group": true, "id": "g1"},
-                {"name": "API", "status": "operational", "group": false, "id": "1"}
+                {"name": "Group Header", "status": "operational", "group": true, "showcase": false, "id": "g1"},
+                {"name": "API", "status": "operational", "group": false, "showcase": true, "id": "1"}
+            ]
+        }
+        """.data(using: .utf8)!
+
+        let mock = MockURLSession(data: json, response: HTTPURLResponse(
+            url: service.baseURL, statusCode: 200, httpVersion: nil, headerFields: nil)!)
+        let provider = StatuspageProvider(session: mock)
+
+        let status = try await provider.fetchStatus(for: service)
+
+        XCTAssertEqual(status.components.count, 1)
+        XCTAssertEqual(status.components[0].name, "API")
+    }
+
+    func testSkipsNonShowcaseComponents() async throws {
+        let json = """
+        {
+            "components": [
+                {"name": "API", "status": "operational", "group": false, "showcase": true, "id": "1"},
+                {"name": "Visit example.com", "status": "operational", "group": false, "showcase": false, "id": "2"}
             ]
         }
         """.data(using: .utf8)!

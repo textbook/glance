@@ -38,7 +38,7 @@ struct StatuspageProvider: StatusProvider {
         let summary = try JSONDecoder().decode(StatuspageResponse.self, from: data)
 
         let components = summary.components
-            .filter { !$0.group }
+            .filter { !$0.group && $0.showcase }
             .map { component in
                 ServiceStatus.Component(
                     id: component.id,
@@ -70,4 +70,5 @@ private struct StatuspageComponent: Decodable {
     let name: String
     let status: String
     let group: Bool
+    let showcase: Bool
 }
