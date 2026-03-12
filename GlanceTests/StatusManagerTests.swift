@@ -65,6 +65,34 @@ final class StatusManagerTests: XCTestCase {
         XCTAssertEqual(manager.worstStatus, .operational)
     }
 
+    func testConfigStoreDrivenInit() async {
+        let tempURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent(UUID().uuidString)
+            .appendingPathExtension("json")
+        defer { try? FileManager.default.removeItem(at: tempURL) }
+
+        let json = """
+        {
+            "services": [
+                {"name": "TestSvc", "baseURL": "https://test.statuspage.io"}
+            ],
+            "pollingInterval": 60
+        }
+        """.data(using: .utf8)!
+        try! json.write(to: tempURL)
+
+        let config = ConfigStore(fileURL: tempURL)
+        let provider = MockStatusProvider(results: [
+            "TestSvc": .success(makeServiceStatus(name: "TestSvc", overall: .operational)),
+        ])
+        let manager = StatusManager(configStore: config, provider: provider)
+
+        await manager.refreshAll()
+
+        XCTAssertEqual(manager.services.count, 1)
+        XCTAssertEqual(manager.services[0].id, "TestSvc")
+    }
+
     // MARK: - Helpers
 
     private func makeServiceStatus(name: String, overall: ComponentStatus) -> ServiceStatus {

@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 
 @MainActor
@@ -6,13 +7,37 @@ final class StatusManager: ObservableObject {
     @Published private(set) var worstStatus: ComponentStatus = .operational
     @Published private(set) var lastRefresh: Date?
 
-    let pollingInterval: TimeInterval
-    private let serviceDefinitions: [ServiceDefinition]
+    private var pollingInterval: TimeInterval
+    private var serviceDefinitions: [ServiceDefinition]
     private let provider: any StatusProvider
     private var pollingTask: Task<Void, Never>?
+    private var configCancellable: AnyCancellable?
 
     var unreachableCount: Int {
         services.filter { $0.overallStatus == .unknown }.count
+    }
+
+    init(
+        configStore: ConfigStore,
+        provider: any StatusProvider,
+        autoStart: Bool = false
+    ) {
+        self.serviceDefinitions = configStore.services
+        self.pollingInterval = configStore.pollingInterval
+        self.provider = provider
+
+        configCancellable = configStore.objectWillChange.sink { [weak self] _ in
+            Task { @MainActor [weak self] in
+                guard let self else { return }
+                self.serviceDefinitions = configStore.services
+                self.pollingInterval = configStore.pollingInterval
+                self.startPolling()
+            }
+        }
+
+        if autoStart {
+            startPolling()
+        }
     }
 
     init(
@@ -76,7 +101,12 @@ final class StatusManager: ObservableObject {
             return collected
         }
 
-        services = results.sorted { $0.id < $1.id }
+        services = definitions.map { def in
+            results.first { $0.id == def.name } ?? ServiceStatus(
+                id: def.name, service: def, overallStatus: .unknown,
+                components: [], lastUpdated: Date()
+            )
+        }
         worstStatus = ComponentStatus.worst(of: services.map(\.overallStatus))
         lastRefresh = Date()
     }
