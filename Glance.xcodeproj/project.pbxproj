@@ -17,6 +17,7 @@
 		A100000008 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000011 /* MockURLSession.swift */; };
 		A100000009 /* StatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000012 /* StatusManager.swift */; };
 		A100000010 /* StatusManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000013 /* StatusManagerTests.swift */; };
+		A100000011 /* StatusMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000014 /* StatusMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		A200000011 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		A200000012 /* StatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusManager.swift; sourceTree = "<group>"; };
 		A200000013 /* StatusManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusManagerTests.swift; sourceTree = "<group>"; };
+		A200000014 /* StatusMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				A200000007 /* Models.swift */,
 				A200000009 /* StatusProvider.swift */,
 				A200000012 /* StatusManager.swift */,
+				A200000014 /* StatusMenuView.swift */,
 				A200000003 /* Assets.xcassets */,
 			);
 			path = Glance;
@@ -199,6 +202,7 @@
 				A100000004 /* Models.swift in Sources */,
 				A100000006 /* StatusProvider.swift in Sources */,
 				A100000009 /* StatusManager.swift in Sources */,
+				A100000011 /* StatusMenuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
