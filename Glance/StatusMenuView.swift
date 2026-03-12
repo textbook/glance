@@ -84,6 +84,15 @@ struct ServiceSectionView: View {
                 HStack {
                     Text(service.service.name)
                         .fontWeight(.medium)
+                    Button {
+                        NSWorkspace.shared.open(service.service.baseURL)
+                    } label: {
+                        Image(systemName: "arrow.up.right.square")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    .buttonStyle(.plain)
+                    .help("Open status page")
                     Spacer()
                     Text(service.overallStatus.summaryText)
                         .font(.caption)
