@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Run tests
+        run: >
+          xcodebuild test
+          -project Glance.xcodeproj
+          -scheme Glance
+          -destination 'platform=macOS'
+
+      - name: Build release archive
+        run: >
+          xcodebuild archive
+          -project Glance.xcodeproj
+          -scheme Glance
+          -destination 'platform=macOS'
+          -archivePath $RUNNER_TEMP/Glance.xcarchive
+          CODE_SIGNING_ALLOWED=NO
+
+      - name: Export .app from archive
+        run: >
+          cp -R $RUNNER_TEMP/Glance.xcarchive/Products/Applications/Glance.app
+          $RUNNER_TEMP/Glance.app
+
+      - name: Upload .app artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: Glance.app
+          path: ${{ runner.temp }}/Glance.app
