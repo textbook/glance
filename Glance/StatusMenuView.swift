@@ -5,21 +5,37 @@ struct StatusMenuView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            ForEach(manager.services) { service in
-                ServiceSectionView(service: service)
-                Divider()
+            ScrollView {
+                VStack(alignment: .leading, spacing: 0) {
+                    ForEach(manager.services) { service in
+                        ServiceSectionView(service: service)
+                        Divider()
+                    }
+                }
             }
+            .frame(maxHeight: 400)
 
             footerView
         }
         .frame(width: 280)
     }
 
+    private static func humanizedTime(since date: Date) -> String {
+        let seconds = Int(-date.timeIntervalSinceNow)
+        switch seconds {
+        case ..<60: return "less than a minute ago"
+        case ..<120: return "1 minute ago"
+        case ..<3600: return "\(seconds / 60) minutes ago"
+        case ..<7200: return "1 hour ago"
+        default: return "\(seconds / 3600) hours ago"
+        }
+    }
+
     @ViewBuilder
     private var footerView: some View {
         VStack(alignment: .leading, spacing: 4) {
             if let lastRefresh = manager.lastRefresh {
-                Text("Last checked: \(lastRefresh, style: .relative) ago")
+                Text("Last checked: \(Self.humanizedTime(since: lastRefresh))")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -34,6 +50,7 @@ struct StatusMenuView: View {
             Button("Quit Glance") {
                 NSApplication.shared.terminate(nil)
             }
+            .keyboardShortcut("q")
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
@@ -52,12 +69,9 @@ struct ServiceSectionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Button {
-                withAnimation { isExpanded.toggle() }
+                isExpanded.toggle()
             } label: {
                 HStack {
-                    Image(service.service.logoName)
-                        .resizable()
-                        .frame(width: 16, height: 16)
                     Text(service.service.name)
                         .fontWeight(.medium)
                     Spacer()
@@ -87,7 +101,7 @@ struct ServiceSectionView: View {
                         }
                     }
                 }
-                .padding(.leading, 40)
+                .padding(.leading, 24)
                 .padding(.trailing, 12)
                 .padding(.bottom, 8)
             }
