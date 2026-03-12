@@ -50,7 +50,6 @@ enum ComponentStatus: Int, Comparable, CaseIterable {
 struct ServiceDefinition {
     let name: String
     let baseURL: URL
-    let logoName: String
 }
 
 struct ServiceStatus: Identifiable {

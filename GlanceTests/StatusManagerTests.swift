@@ -11,8 +11,8 @@ final class StatusManagerTests: XCTestCase {
         ])
         let manager = StatusManager(
             serviceDefinitions: [
-                ServiceDefinition(name: "Anthropic", baseURL: URL(string: "https://a.io")!, logoName: "a"),
-                ServiceDefinition(name: "GitHub", baseURL: URL(string: "https://g.io")!, logoName: "g"),
+                ServiceDefinition(name: "Anthropic", baseURL: URL(string: "https://a.io")!),
+                ServiceDefinition(name: "GitHub", baseURL: URL(string: "https://g.io")!),
             ],
             provider: provider,
             pollingInterval: 300
@@ -31,8 +31,8 @@ final class StatusManagerTests: XCTestCase {
         ])
         let manager = StatusManager(
             serviceDefinitions: [
-                ServiceDefinition(name: "Anthropic", baseURL: URL(string: "https://a.io")!, logoName: "a"),
-                ServiceDefinition(name: "GitHub", baseURL: URL(string: "https://g.io")!, logoName: "g"),
+                ServiceDefinition(name: "Anthropic", baseURL: URL(string: "https://a.io")!),
+                ServiceDefinition(name: "GitHub", baseURL: URL(string: "https://g.io")!),
             ],
             provider: provider,
             pollingInterval: 300
@@ -52,8 +52,8 @@ final class StatusManagerTests: XCTestCase {
         ])
         let manager = StatusManager(
             serviceDefinitions: [
-                ServiceDefinition(name: "Anthropic", baseURL: URL(string: "https://a.io")!, logoName: "a"),
-                ServiceDefinition(name: "GitHub", baseURL: URL(string: "https://g.io")!, logoName: "g"),
+                ServiceDefinition(name: "Anthropic", baseURL: URL(string: "https://a.io")!),
+                ServiceDefinition(name: "GitHub", baseURL: URL(string: "https://g.io")!),
             ],
             provider: provider,
             pollingInterval: 300
@@ -70,7 +70,7 @@ final class StatusManagerTests: XCTestCase {
     private func makeServiceStatus(name: String, overall: ComponentStatus) -> ServiceStatus {
         ServiceStatus(
             id: name,
-            service: ServiceDefinition(name: name, baseURL: URL(string: "https://example.com")!, logoName: ""),
+            service: ServiceDefinition(name: name, baseURL: URL(string: "https://example.com")!),
             overallStatus: overall,
             components: [],
             lastUpdated: Date()
