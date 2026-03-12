@@ -10,6 +10,8 @@
 		A100000001 /* GlanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000001 /* GlanceApp.swift */; };
 		A100000002 /* GlanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000005 /* GlanceTests.swift */; };
 		A100000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A200000003 /* Assets.xcassets */; };
+		A100000004 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000007 /* Models.swift */; };
+		A100000005 /* ModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000008 /* ModelsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +30,8 @@
 		A200000004 /* Glance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A200000005 /* GlanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceTests.swift; sourceTree = "<group>"; };
 		A200000006 /* GlanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A200000007 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		A200000008 /* ModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				A200000001 /* GlanceApp.swift */,
+				A200000007 /* Models.swift */,
 				A200000003 /* Assets.xcassets */,
 			);
 			path = Glance;
@@ -70,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				A200000005 /* GlanceTests.swift */,
+				A200000008 /* ModelsTests.swift */,
 			);
 			path = GlanceTests;
 			sourceTree = "<group>";
@@ -175,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A100000001 /* GlanceApp.swift in Sources */,
+				A100000004 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A100000002 /* GlanceTests.swift in Sources */,
+				A100000005 /* ModelsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
