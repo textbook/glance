@@ -48,15 +48,19 @@ struct StatusMenuView: View {
 
             Divider()
 
-            Button("Settings...") {
-                SettingsWindowController.show(configStore: configStore)
-            }
-            .keyboardShortcut(",")
+            HStack {
+                Button("Settings...") {
+                    SettingsWindowController.show(configStore: configStore)
+                }
+                .keyboardShortcut(",")
 
-            Button("Quit Glance") {
-                NSApplication.shared.terminate(nil)
+                Spacer()
+
+                Button("Quit Glance") {
+                    NSApplication.shared.terminate(nil)
+                }
+                .keyboardShortcut("q")
             }
-            .keyboardShortcut("q")
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
