@@ -12,6 +12,9 @@
 		A100000003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A200000003 /* Assets.xcassets */; };
 		A100000004 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000007 /* Models.swift */; };
 		A100000005 /* ModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000008 /* ModelsTests.swift */; };
+		A100000006 /* StatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000009 /* StatusProvider.swift */; };
+		A100000007 /* StatuspageProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000010 /* StatuspageProviderTests.swift */; };
+		A100000008 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000011 /* MockURLSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +35,9 @@
 		A200000006 /* GlanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GlanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A200000007 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		A200000008 /* ModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsTests.swift; sourceTree = "<group>"; };
+		A200000009 /* StatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusProvider.swift; sourceTree = "<group>"; };
+		A200000010 /* StatuspageProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatuspageProviderTests.swift; sourceTree = "<group>"; };
+		A200000011 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,7 @@
 			children = (
 				A200000001 /* GlanceApp.swift */,
 				A200000007 /* Models.swift */,
+				A200000009 /* StatusProvider.swift */,
 				A200000003 /* Assets.xcassets */,
 			);
 			path = Glance;
@@ -76,6 +83,8 @@
 			children = (
 				A200000005 /* GlanceTests.swift */,
 				A200000008 /* ModelsTests.swift */,
+				A200000010 /* StatuspageProviderTests.swift */,
+				A200000011 /* MockURLSession.swift */,
 			);
 			path = GlanceTests;
 			sourceTree = "<group>";
@@ -182,6 +191,7 @@
 			files = (
 				A100000001 /* GlanceApp.swift in Sources */,
 				A100000004 /* Models.swift in Sources */,
+				A100000006 /* StatusProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +201,8 @@
 			files = (
 				A100000002 /* GlanceTests.swift in Sources */,
 				A100000005 /* ModelsTests.swift in Sources */,
+				A100000007 /* StatuspageProviderTests.swift in Sources */,
+				A100000008 /* MockURLSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
