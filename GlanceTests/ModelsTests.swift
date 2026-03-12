@@ -47,4 +47,14 @@ final class ComponentStatusTests: XCTestCase {
     func testWorstEmptyReturnsOperational() {
         XCTAssertEqual(ComponentStatus.worst(of: []), .operational)
     }
+
+    func testServiceDefinitionCodableRoundTrip() {
+        let definition = ServiceDefinition(
+            name: "Test",
+            baseURL: URL(string: "https://test.statuspage.io")!
+        )
+        let data = try! JSONEncoder().encode(definition)
+        let decoded = try! JSONDecoder().decode(ServiceDefinition.self, from: data)
+        XCTAssertEqual(decoded, definition)
+    }
 }

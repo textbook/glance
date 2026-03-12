@@ -47,7 +47,8 @@ enum ComponentStatus: Int, Comparable, CaseIterable {
     }
 }
 
-struct ServiceDefinition {
+struct ServiceDefinition: Codable, Identifiable, Equatable {
+    var id: String { name }
     let name: String
     let baseURL: URL
 }
