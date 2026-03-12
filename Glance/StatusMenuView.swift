@@ -2,6 +2,7 @@ import SwiftUI
 
 struct StatusMenuView: View {
     @ObservedObject var manager: StatusManager
+    @ObservedObject var configStore: ConfigStore
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {

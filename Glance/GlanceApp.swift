@@ -3,24 +3,22 @@ import AppKit
 
 @main
 struct GlanceApp: App {
-    @StateObject private var manager = StatusManager(
-        serviceDefinitions: [
-            ServiceDefinition(
-                name: "Anthropic",
-                baseURL: URL(string: "https://anthropic.statuspage.io")!
-            ),
-            ServiceDefinition(
-                name: "GitHub",
-                baseURL: URL(string: "https://www.githubstatus.com")!
-            ),
-        ],
-        provider: StatuspageProvider(),
-        autoStart: true
-    )
+    @StateObject private var configStore: ConfigStore
+    @StateObject private var manager: StatusManager
+
+    init() {
+        let config = ConfigStore()
+        _configStore = StateObject(wrappedValue: config)
+        _manager = StateObject(wrappedValue: StatusManager(
+            configStore: config,
+            provider: StatuspageProvider(),
+            autoStart: true
+        ))
+    }
 
     var body: some Scene {
         MenuBarExtra {
-            StatusMenuView(manager: manager)
+            StatusMenuView(manager: manager, configStore: configStore)
         } label: {
             Image(nsImage: statusDot(for: manager.worstStatus))
         }
