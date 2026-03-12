@@ -18,6 +18,8 @@
 		A100000009 /* StatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000012 /* StatusManager.swift */; };
 		A100000010 /* StatusManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000013 /* StatusManagerTests.swift */; };
 		A100000011 /* StatusMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000014 /* StatusMenuView.swift */; };
+		A100000012 /* ConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000015 /* ConfigStore.swift */; };
+		A100000013 /* ConfigStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A200000016 /* ConfigStoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		A200000012 /* StatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusManager.swift; sourceTree = "<group>"; };
 		A200000013 /* StatusManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusManagerTests.swift; sourceTree = "<group>"; };
 		A200000014 /* StatusMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuView.swift; sourceTree = "<group>"; };
+		A200000015 /* ConfigStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStore.swift; sourceTree = "<group>"; };
+		A200000016 /* ConfigStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 				A200000009 /* StatusProvider.swift */,
 				A200000012 /* StatusManager.swift */,
 				A200000014 /* StatusMenuView.swift */,
+				A200000015 /* ConfigStore.swift */,
 				A200000003 /* Assets.xcassets */,
 			);
 			path = Glance;
@@ -94,6 +99,7 @@
 				A200000010 /* StatuspageProviderTests.swift */,
 				A200000011 /* MockURLSession.swift */,
 				A200000013 /* StatusManagerTests.swift */,
+				A200000016 /* ConfigStoreTests.swift */,
 			);
 			path = GlanceTests;
 			sourceTree = "<group>";
@@ -203,6 +209,7 @@
 				A100000006 /* StatusProvider.swift in Sources */,
 				A100000009 /* StatusManager.swift in Sources */,
 				A100000011 /* StatusMenuView.swift in Sources */,
+				A100000012 /* ConfigStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +222,7 @@
 				A100000007 /* StatuspageProviderTests.swift in Sources */,
 				A100000008 /* MockURLSession.swift in Sources */,
 				A100000010 /* StatusManagerTests.swift in Sources */,
+				A100000013 /* ConfigStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
