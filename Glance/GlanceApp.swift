@@ -15,13 +15,13 @@ struct GlanceApp: App {
                 logoName: "github-logo"
             ),
         ],
-        provider: StatuspageProvider()
+        provider: StatuspageProvider(),
+        autoStart: true
     )
 
     var body: some Scene {
         MenuBarExtra {
             StatusMenuView(manager: manager)
-                .onAppear { manager.startPolling() }
         } label: {
             Image(systemName: "circle.fill")
                 .renderingMode(.original)

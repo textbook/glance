@@ -18,11 +18,15 @@ final class StatusManager: ObservableObject {
     init(
         serviceDefinitions: [ServiceDefinition],
         provider: any StatusProvider,
-        pollingInterval: TimeInterval = 300
+        pollingInterval: TimeInterval = 300,
+        autoStart: Bool = false
     ) {
         self.serviceDefinitions = serviceDefinitions
         self.provider = provider
         self.pollingInterval = pollingInterval
+        if autoStart {
+            startPolling()
+        }
     }
 
     func startPolling() {
