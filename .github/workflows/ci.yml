@@ -39,3 +39,4 @@ jobs:
         with:
           name: Glance.app
           path: ${{ runner.temp }}/Glance.zip
+          archive: false
