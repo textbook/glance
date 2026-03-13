@@ -36,9 +36,11 @@ struct StatusMenuView: View {
     private var footerView: some View {
         VStack(alignment: .leading, spacing: 4) {
             if let lastRefresh = manager.lastRefresh {
-                Text("Last checked: \(Self.humanizedTime(since: lastRefresh))")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                TimelineView(.periodic(from: .now, by: 15)) { _ in
+                    Text("Last checked: \(Self.humanizedTime(since: lastRefresh))")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
             if manager.unreachableCount > 0 {
                 Text("\(manager.unreachableCount) service\(manager.unreachableCount == 1 ? "" : "s") unreachable")
