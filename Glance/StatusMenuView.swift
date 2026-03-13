@@ -36,10 +36,23 @@ struct StatusMenuView: View {
     private var footerView: some View {
         VStack(alignment: .leading, spacing: 4) {
             if let lastRefresh = manager.lastRefresh {
-                TimelineView(.periodic(from: .now, by: 15)) { _ in
-                    Text("Last checked: \(Self.humanizedTime(since: lastRefresh))")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                HStack(spacing: 4) {
+                    TimelineView(.periodic(from: .now, by: 15)) { _ in
+                        Text("Last checked: \(Self.humanizedTime(since: lastRefresh))")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    Spacer()
+                    Button {
+                        Task { await manager.refreshAll() }
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    .buttonStyle(.plain)
+                    .keyboardShortcut("r")
+                    .help("Refresh now")
                 }
             }
             if manager.unreachableCount > 0 {
