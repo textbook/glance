@@ -30,12 +30,12 @@ jobs:
           CODE_SIGNING_ALLOWED=NO
 
       - name: Export .app from archive
-        run: >
-          cp -R $RUNNER_TEMP/Glance.xcarchive/Products/Applications/Glance.app
-          $RUNNER_TEMP/Glance.app
+        run: |
+          cp -R $RUNNER_TEMP/Glance.xcarchive/Products/Applications/Glance.app $RUNNER_TEMP/Glance.app
+          ditto -c -k --keepParent $RUNNER_TEMP/Glance.app $RUNNER_TEMP/Glance.zip
 
       - name: Upload .app artifact
         uses: actions/upload-artifact@v7
         with:
           name: Glance.app
-          path: ${{ runner.temp }}/Glance.app
+          path: ${{ runner.temp }}/Glance.zip
